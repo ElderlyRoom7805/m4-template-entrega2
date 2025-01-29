@@ -12,7 +12,10 @@ export class booksControllers {
     }
 
     getBooks(req: Request, res: Response): Response{
-        return res.status(200).json(booksDatabase);
+        const newBookServices = new BookServices();
+        const newBook = newBookServices.getBooks();
+        
+        return res.status(200).json(newBook);
     }
 
     onlyOneBook(req: Request, res: Response): Response{
