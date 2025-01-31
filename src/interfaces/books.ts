@@ -12,7 +12,7 @@ export type UpdateBook = Partial<AddBook>;
 
 export interface servicesInterface {
     createBook(body: UpdateBook): Books;
-    getBooks(): Books[];
+    getBooks(name?: string): Books[];
     onlyOneBook(id: number): Books;
     updatedBook(id: number, body: UpdateBook): Books;
     deleteBook(id: number): void;

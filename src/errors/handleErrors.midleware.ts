@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express"
 import { AppError } from "./errors"
+import { ZodError } from "zod";
 export class hlandleErrors {
     static execute(err: Error, req: Request, res: Response, next: NextFunction){
         if(err instanceof AppError){

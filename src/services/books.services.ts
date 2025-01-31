@@ -1,3 +1,4 @@
+import e from "express";
 import { booksDatabase, setId } from "../database/database";
 import { AddBook, Books, servicesInterface, UpdateBook } from "../interfaces/books";
 
@@ -17,8 +18,13 @@ export class BookServices implements servicesInterface{
             return newBook;
         }
     
-        getBooks(){
-            return booksDatabase;
+        getBooks(name?: string): Books[] {
+            if(name){
+                const bookFilter = booksDatabase.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
+                return bookFilter;
+            } else{
+                return booksDatabase;
+            }
         }
     
         onlyOneBook(id: number){

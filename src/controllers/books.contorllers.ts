@@ -1,6 +1,7 @@
 import { Response, Request } from "express";
 import { BookServices } from "../services/books.services";
 import { booksDatabase } from "../database/database";
+import { string } from "zod";
 
 
 export class booksControllers {
@@ -13,7 +14,7 @@ export class booksControllers {
 
     getBooks(req: Request, res: Response): Response{
         const newBookServices = new BookServices();
-        const newBook = newBookServices.getBooks();
+        const newBook = newBookServices.getBooks(req.query.search as string);
         
         return res.status(200).json(newBook);
     }
